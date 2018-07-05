@@ -27,6 +27,14 @@ public class TestController {
     public  String add(){
         return  "depart_add.jsp";
     }
+    @RequestMapping("/toAdd")
+    public  String toAdd(String name,String number){
+        Department dept=new Department();
+        dept.setDepartmentName(name);
+        dept.setDepartmentNumber(number);
+        departmentService.insert(dept);
+        return  "redirect:/test/index";
+    }
 
     @RequestMapping("/upd")
     public  String upd(Model model,Integer id){
@@ -34,6 +42,15 @@ public class TestController {
         model.addAttribute("dept",dept);
         return  "depart_upd.jsp";
     }
+    @RequestMapping("/toUpd")
+    public  String toUpd(Model model,Integer id,String name,String number){
+        Department dept=departmentService.findOne(id);
+        dept.setDepartmentName(name);
+        dept.setDepartmentNumber(number);
+        departmentService.update(dept);
+        return  "redirect:/test/index";
+    }
+
     @RequestMapping("/del")
     public  String del(Integer id){
         departmentService.delete(id);

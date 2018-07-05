@@ -3,9 +3,16 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lance.mybatis.mapper.DepartmentMapper">
-
-	<!-- findAll -->
+	<!-- findAll 查询全部用户-->
     <select id="findAll" resultType="Department">
         select *from boot_department
     </select>
+    <!-- insert 添加用户-->
+    <insert id="insert" parameterType="Department">
+        insert into boot_department(departmentName,departmentNumber) values (#{departmentName},#{departmentNumber})
+    </insert>
+    <!-- update 修改用户-->
+    <update id="update" parameterType="Department">
+        update boot_department set departmentName=#{departmentName},departmentNumber=#{departmentNumber} where id=#{id}
+    </update>
 </mapper>

@@ -17,11 +17,11 @@ public interface DepartmentMapper {
 	@Select(value="select *from boot_department where id=#{id}")
 	Department findOne(int id);
 	/**
-	 * findOne
+	 * delete
 	 * @param id
 	 * @return
 	 */
-	@Select(value="delete *from boot_department where id=#{id}")
+	@Select(value="delete from boot_department where id=#{id}")
 	void delete(int id);
 
 	/**
@@ -29,4 +29,16 @@ public interface DepartmentMapper {
 	 * @return
 	 */
 	List<Department> findAll();
+
+	/**
+	 * insert
+	 * @return
+	 */
+	void insert(Department department);
+
+	/**
+	 * update
+	 * @return
+	 */
+	void update(Department department);
 }
